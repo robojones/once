@@ -1,6 +1,7 @@
 {
   "name": "once",
   "main": "build/index",
+  "typings": "build/index",
   "description": "Create promises for events.",
   "version": "0.0.0",
   "private": true,
