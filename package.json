@@ -1,0 +1,19 @@
+{
+  "name": "ts-start.com",
+  "ports": [
+    7600
+  ],
+  "workers": 1,
+  "main": "build/index",
+  "private": true,
+  "scripts": {
+    "start": "z1 start -- --require source-map-support/register",
+    "restart": "yarn build && z1 restart && z1 logs",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.5",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  }
+}
