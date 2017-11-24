@@ -25,6 +25,7 @@
     "promises",
     "create"
   ],
+  "tonicExampleFilename": "example.js",
   "author": "robojones",
   "license": "MIT",
   "bugs": {
