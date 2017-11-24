@@ -16,7 +16,7 @@ export interface PromiseEmitter extends EventEmitter {
  *                    The arrayMode does not affect "error" events.
  */
 
-async function singleOnce(emitter: EventEmitter, event: string, arrayMode?: true): Promise<any> {
+async function singleOnce (emitter: EventEmitter, event: string, arrayMode?: true): Promise<any> {
   const target = emitter as PromiseEmitter
 
   if (!target.__promises__) {
@@ -61,7 +61,7 @@ async function singleOnce(emitter: EventEmitter, event: string, arrayMode?: true
  *                    The arrayMode does not affect "error" events.
  */
 
-export default async function once(
+export default async function once (
   emitter: EventEmitter,
   event: string | Array<string | Promise<any>>,
   arrayMode?: true
