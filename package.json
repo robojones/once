@@ -3,7 +3,7 @@
   "main": "build/index",
   "typings": "build/index",
   "description": "Create promises for events.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "z1 start",
     "restart": "yarn build && z1 restart && z1 logs",
