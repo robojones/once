@@ -8,6 +8,14 @@ describe('once', () => {
   beforeEach(function () {
     this.emitter = new EventEmitter()
   })
+
+  it('should cache promises -> there should be only one listener per event', function () {
+    once(this.emitter, 'test')
+    once(this.emitter, 'test')
+
+    assert.strictEqual(this.emitter.listenerCount('test'), 1)
+  })
+
   describe('returned promise', () => {
 
     describe('default', () => {
