@@ -1,25 +1,41 @@
 {
-  "name": "ts-start.com",
-  "ports": [
-    7600
-  ],
-  "workers": 1,
+  "name": "once",
   "main": "build/index",
+  "description": "Create promises for events.",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "z1 start -- --require source-map-support/register",
+    "start": "z1 start",
     "restart": "yarn build && z1 restart && z1 logs",
     "build": "tsc",
-    "test": "yarn build && node_modules/mocha/bin/mocha build/test --require source-map-support/register"
+    "test": "yarn build && node_modules/mocha/bin/mocha build/test"
   },
+  "engines": {
+    "node": ">=7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robojones/once.git"
+  },
+  "keywords": [
+    "promise",
+    "event",
+    "events",
+    "promises",
+    "create"
+  ],
+  "author": "robojones",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robojones/once/issues"
+  },
+  "homepage": "https://github.com/robojones/once#readme",
   "devDependencies": {
     "@types/mocha": "^2.2.44",
     "@types/node": "^7.0.5",
     "mocha": "^4.0.1",
+    "source-map-support": "^0.5.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1"
-  },
-  "dependencies": {
-    "source-map-support": "^0.5.0"
   }
 }

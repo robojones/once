@@ -1,3 +1,5 @@
+require('source-map-support/register')
+
 import * as assert from 'assert'
 import { EventEmitter } from 'events'
 import once from '..'
