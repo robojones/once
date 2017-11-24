@@ -1,4 +1,4 @@
-# once
+# once-promise
 
 Create promises for events.
 
@@ -9,7 +9,7 @@ Create promises for events.
 ## JS Example
 
 ```javascript
-const once = require('once').default
+const once = require('once-promise').default
 const { EventEmitter } = require('events')
 
 const emitter = new EventEmitter()
