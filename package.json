@@ -9,11 +9,17 @@
   "scripts": {
     "start": "z1 start -- --require source-map-support/register",
     "restart": "yarn build && z1 restart && z1 logs",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "yarn build && node_modules/mocha/bin/mocha build/test --require source-map-support/register"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.44",
     "@types/node": "^7.0.5",
+    "mocha": "^4.0.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.0"
   }
 }
