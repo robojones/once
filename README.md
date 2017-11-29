@@ -6,27 +6,61 @@ Create promises for events.
 [![Test Coverage](https://codeclimate.com/github/robojones/once/badges/coverage.svg)](https://codeclimate.com/github/robojones/once/coverage)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Installation
+
+NPM:
+```
+npm install once-promise --save
+```
+
 ## JS Example
 
 ```javascript
 const once = require('once-promise').default
 const { EventEmitter } = require('events')
 
-const emitter = new EventEmitter()
+async function example () {
+  const emitter = new EventEmitter()
+  
+  setTimeout(() => {
+    emitter.emit('continue')
+  }, 5000)
+  
+  console.log('start')
+  
+  // create and await a promise for the "continue" event.
+  // It should take 5s until the promise gets resolved.
+  await once(emitter, 'continue')
+  
+  console.log('end :D')
+}
+
+example()
+```
+
+## TypeScript Example
+```typescript
+import EventEmitter from 'events'
+import once from 'once-promise'
+
+async function example () {
+  const emitter = new EventEmitter()
 
 
-setTimeout(() => {
-  emitter.emit('continue')
-}, 5000)
+  setTimeout(() => {
+    emitter.emit('continue')
+  }, 5000)
 
-console.log('start')
+  console.log('start')
 
-// create and await a promise for the "continue" event.
-// It should take 5s until the promise gets resolved.
-await once(emitter, 'continue')
+  // create and await a promise for the "continue" event.
+  // It should take 5s until the promise gets resolved.
+  await once(emitter, 'continue')
 
-console.log('end :D')
+  console.log('end :D')
+}
 
+example()
 ```
 
 ## once(emitter, event, arrayMode)

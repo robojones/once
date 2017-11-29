@@ -1,8 +1,9 @@
-const once = require('once-promise').default
-const { EventEmitter } = require('events')
+import EventEmitter from 'events'
+import once from '.' // TODO: replace with 'once-promise'
 
 async function example () {
   const emitter = new EventEmitter()
+
 
   setTimeout(() => {
     emitter.emit('continue')
@@ -16,5 +17,3 @@ async function example () {
 
   console.log('end :D')
 }
-
-example()
