@@ -6,14 +6,13 @@ Create promises for events.
 [![Test Coverage](https://codeclimate.com/github/robojones/once/badges/coverage.svg)](https://codeclimate.com/github/robojones/once/coverage)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Installation
+## Contents
 
-NPM:
-```
-npm install once-promise --save
-```
+1. [JavaScript Example](#javascript-example)
+2. [TypeScript Example](#typescript-example)
+3. [Docs](#docs)
 
-## JS Example
+## JavaScript Example
 
 ```javascript
 const once = require('once-promise').default
@@ -63,7 +62,9 @@ async function example () {
 example()
 ```
 
-## once(emitter, event, arrayMode)
+## Docs
+
+### once(emitter, event, arrayMode)
 1. emitter `<internal.EventEmitter>` - This can be any EventEmitter (e.g. the `process` object, a stream,...)
 2. event `<string|Array<string|Promise<any>>>` - Either one eventname or an array containing the names of multiple events. The array can also contain promises (e.g. from other events). If an array is passed, the returned promise will resolve to the first promise/event that gets resolved.
 3. arrayMode? `<true>` - If you pass true as last parameter, the promise will resolve to an array containing all arguments provided by the (fastest) event. This can be useful if an event emits multiple values.
