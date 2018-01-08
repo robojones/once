@@ -8,23 +8,27 @@ Create promises for events.
 
 ## Contents
 
-1. [Usage examples](#usage-example)
-2. [JavaScript Example](#javascript-example)
-3. [TypeScript Example](#typescript-example)
+1. [Usage examples](#usage-examples)
+2. [JavaScript example](#javascript-example)
+3. [TypeScript example](#typescript-example)
 4. [Docs](#docs)
 
 ## Usage examples
 
 ### Await the "exit" event of the process
+
 ```javascript
 await once(process, 'exit')
 ```
+
 _This will await the "exit" event of the nodejs process._
 
 ### Multiple events
+
 ```javascript
 await once(readable, ['error', 'end'])
 ```
+
 _In this example we are awaiting the "error" or "end" event of a readable stream. If the stream emits the "end" event, the promise will get resolved. If an "error" gets emitted first, the promise gets rejected to the error._
 
 ## JavaScript example
@@ -42,7 +46,7 @@ async function example () {
   
   console.log('start')
   
-  // create and await a promise for the "continue" event.
+  // Create and await a promise for the "continue" event.
   // It should take 5s until the promise gets resolved.
   await once(emitter, 'continue')
   
@@ -53,6 +57,7 @@ example()
 ```
 
 ## TypeScript example
+
 ```typescript
 import EventEmitter from 'events'
 import once from 'once-promise'
@@ -67,7 +72,7 @@ async function example () {
 
   console.log('start')
 
-  // create and await a promise for the "continue" event.
+  // Create and await a promise for the "continue" event.
   // It should take 5s until the promise gets resolved.
   await once(emitter, 'continue')
 

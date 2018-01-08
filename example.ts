@@ -1,5 +1,5 @@
 import EventEmitter from 'events'
-import once from '.' // TODO: replace with 'once-promise'
+import once from 'once-promise'
 
 async function example () {
   const emitter = new EventEmitter()
