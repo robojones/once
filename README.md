@@ -2,9 +2,10 @@
 
 Create promises for events.
 
-[![CircleCI](https://circleci.com/gh/robojones/once.svg?style=shield)](https://circleci.com/gh/robojones/once)
-[![Test Coverage](https://codeclimate.com/github/robojones/once/badges/coverage.svg)](https://codeclimate.com/github/robojones/once/coverage)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CircleCI](https://circleci.com/gh/robojones/once.svg?style=svg)](https://circleci.com/gh/robojones/once)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/eb25331c1c82047fc8ad/test_coverage)](https://codeclimate.com/github/robojones/once/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/eb25331c1c82047fc8ad/maintainability)](https://codeclimate.com/github/robojones/once/maintainability)
 
 ## Contents
 
@@ -39,17 +40,17 @@ const { EventEmitter } = require('events')
 
 async function example () {
   const emitter = new EventEmitter()
-  
+
   setTimeout(() => {
     emitter.emit('continue')
   }, 5000)
-  
+
   console.log('start')
-  
+
   // Create and await a promise for the "continue" event.
   // It should take 5s until the promise gets resolved.
   await once(emitter, 'continue')
-  
+
   console.log('end :D')
 }
 
