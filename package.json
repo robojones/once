@@ -2,13 +2,13 @@
   "name": "once-promise",
   "main": "build/index",
   "typings": "build/index",
-  "description": "Create promises for events.",
+  "description": "Promisify events.",
   "version": "1.0.1",
   "scripts": {
-    "start": "z1 start",
-    "restart": "yarn build && z1 restart && z1 logs",
+    "watch": "tsc --watch",
+    "lint": "tslint --project .",
     "build": "tsc",
-    "test": "yarn build && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha build/test"
+    "test": "yarn build && nyc mocha 'build/test/**/*.js'"
   },
   "engines": {
     "node": ">=7.0.0"
@@ -22,9 +22,9 @@
     "event",
     "events",
     "promises",
-    "create"
+    "create",
+    "promisify"
   ],
-  "tonicExampleFilename": "example.js",
   "author": "robojones",
   "license": "MIT",
   "bugs": {
@@ -33,12 +33,27 @@
   "homepage": "https://github.com/robojones/once#readme",
   "devDependencies": {
     "@types/mocha": "^2.2.44",
-    "@types/node": "^7.0.5",
-    "codeclimate-test-reporter": "^0.5.0",
-    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^4.0.1",
-    "source-map-support": "^0.5.0",
+    "nyc": "^13.0.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "@types/node": "^10.11.4",
+    "tslint-config-ultra": "^2.1.0"
+	},
+	"nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "lcov",
+      "html",
+      "text",
+      "text-summary"
+    ],
+    "exclude": [
+      "build/test"
+    ]
   }
 }
