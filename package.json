@@ -3,7 +3,7 @@
   "main": "build/index",
   "typings": "build/index",
   "description": "Promisify events.",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "scripts": {
     "watch": "tsc --watch",
     "lint": "tslint --project .",
@@ -41,8 +41,8 @@
   "dependencies": {
     "@types/node": "^10.11.4",
     "tslint-config-ultra": "^2.1.0"
-	},
-	"nyc": {
+  },
+  "nyc": {
     "extension": [
       ".ts"
     ],
