@@ -34,9 +34,9 @@ jobs:
           environment:
             MOCHA_FILE: reports/junit.xml
       - store_test_results:
-          path: ~/reports
+          path: ./reports
       - store_artifacts:
-          path: ~/reports
+          path: ./reports
       - run:
           name: Report coverage to Codeclimate
           command: ./cc-test-reporter after-build -r ${CODECLIMATE_REPO_TOKEN}
