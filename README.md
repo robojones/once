@@ -9,10 +9,18 @@ Create promises for events.
 
 ## Contents
 
-1. [Usage examples](#usage-examples)
-2. [JavaScript example](#javascript-example)
-3. [TypeScript example](#typescript-example)
-4. [Docs](#docs)
+1. [Breaking changes](#breaking-changes)
+2. [Usage examples](#usage-examples)
+3. [JavaScript example](#javascript-example)
+4. [TypeScript example](#typescript-example)
+5. [Docs](#docs)
+
+## Breaking changes
+
+There are some incompatibilities between version 1.x and 2.x
+
+- The `once()` method is no longer the default export. See the examples for more information.
+- When providing multiple event names the array may no longer contain promises.
 
 ## Usage examples
 
