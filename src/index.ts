@@ -1,10 +1,10 @@
 import { EventEmitter } from 'events'
 
 export interface PromiseEmitter extends EventEmitter {
-  /**
-   * Contains all pending promises for events that have not yet been triggered.
-   */
-  __promises__: { [event: string]: Promise<any> }
+	/**
+	 * Contains all pending promises for events that have not yet been triggered.
+	 */
+	__promises__: { [event: string]: Promise<any> }
 }
 
 /**
@@ -12,44 +12,44 @@ export interface PromiseEmitter extends EventEmitter {
  * @param emitter - The EventEmitter that emits the event.
  * @param event - The name of the event.
  * @param arrayMode - If arrayMode is set to true, the promise will resolve to an array
- *                    containing all arguments that were passed to the event.
- *                    The arrayMode does not affect "error" events.
+ * containing all arguments that were passed to the event.
+ * The arrayMode does not affect "error" events.
  */
 
 async function singleOnce (emitter: EventEmitter, event: string, arrayMode?: boolean): Promise<any> {
-  const target = emitter as PromiseEmitter
+	const target = emitter as PromiseEmitter
 
-  if (!target.__promises__) {
-    target.__promises__ = {}
-  }
+	if (!target.__promises__) {
+		target.__promises__ = {}
+	}
 
-  // check if promise already exists
-  if (target.__promises__[event]) {
-    return target.__promises__[event]
-  }
+	// check if promise already exists
+	if (target.__promises__[event]) {
+		return target.__promises__[event]
+	}
 
-  const promise: Promise<any> = new Promise((resolve, reject) => {
-    target.once(event, (...args) => {
+	const promise: Promise<any> = new Promise((resolve, reject) => {
+		target.once(event, (...args) => {
 
-      // remove from cache
-      delete target.__promises__[event]
+			// remove from cache
+			delete target.__promises__[event]
 
-      if (event === 'error') {
-        reject(args[0])
-      } else {
-        if (arrayMode) {
-          resolve(args)
-        } else {
-          resolve(args[0])
-        }
-      }
+			if (event === 'error') {
+				reject(args[0])
+			} else {
+				if (arrayMode) {
+					resolve(args)
+				} else {
+					resolve(args[0])
+				}
+			}
 
-    })
-  })
+		})
+	})
 
-  target.__promises__[event] = promise
+	target.__promises__[event] = promise
 
-  return promise
+	return promise
 }
 
 
@@ -58,14 +58,14 @@ async function singleOnce (emitter: EventEmitter, event: string, arrayMode?: boo
  * @param emitter - The EventEmitter that emits the event.
  * @param event - The name of the event or an array of names and promises.
  * @param arrayMode - If arrayMode is set to true, the promise will resolve to an array
- *                    containing all arguments that were passed to the event.
- *                    The arrayMode does not affect "error" events.
+ * containing all arguments that were passed to the event.
+ * The arrayMode does not affect "error" events.
  */
 
 export default async function once (
-  emitter: EventEmitter,
-  event: string | Array<string | Promise<any>>,
-  arrayMode: true
+	emitter: EventEmitter,
+	event: string | Array<string | Promise<any>>,
+	arrayMode: true,
 ): Promise<any[]>
 
 /**
@@ -73,14 +73,14 @@ export default async function once (
  * @param emitter - The EventEmitter that emits the event.
  * @param event - The name of the event or an array of names and promises.
  * @param arrayMode - If arrayMode is set to true, the promise will resolve to an array
- *                    containing all arguments that were passed to the event.
- *                    The arrayMode does not affect "error" events.
+ * containing all arguments that were passed to the event.
+ * The arrayMode does not affect "error" events.
  */
 
 export default async function once (
-  emitter: EventEmitter,
-  event: string | Array<string | Promise<any>>,
-  arrayMode?: false
+	emitter: EventEmitter,
+	event: string | Array<string | Promise<any>>,
+	arrayMode?: false,
 ): Promise<any>
 
 /**
@@ -88,26 +88,26 @@ export default async function once (
  * @param emitter - The EventEmitter that emits the event.
  * @param event - The name of the event or an array of names and promises.
  * @param arrayMode - If arrayMode is set to true, the promise will resolve to an array
- *                    containing all arguments that were passed to the event.
- *                    The arrayMode does not affect "error" events.
+ * containing all arguments that were passed to the event.
+ * The arrayMode does not affect "error" events.
  */
 
 export default async function once (
-  emitter: EventEmitter,
-  event: string | Array<string | Promise<any>>,
-  arrayMode?: boolean
+	emitter: EventEmitter,
+	event: string | Array<string | Promise<any>>,
+	arrayMode?: boolean,
 ): Promise<any[]> {
-  if (typeof event === 'string') {
-    return singleOnce(emitter, event, arrayMode)
-  }
+	if (typeof event === 'string') {
+		return singleOnce(emitter, event, arrayMode)
+	}
 
-  const promises = event.map(element => {
-    if (typeof element === 'string') {
-      return singleOnce(emitter, element, arrayMode)
-    }
+	const promises = event.map((element) => {
+		if (typeof element === 'string') {
+			return singleOnce(emitter, element, arrayMode)
+		}
 
-    return element
-  })
+		return element
+	})
 
-  return Promise.race(promises)
+	return Promise.race(promises)
 }
