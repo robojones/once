@@ -69,6 +69,8 @@ describe('once', () => {
 				})
 				const result = await promise
 
+				throw new Error('THIS IS AN ERROR!!!!')
+
 				assert.strictEqual(result, value)
 			})
 		})
