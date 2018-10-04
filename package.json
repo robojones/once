@@ -6,9 +6,10 @@
   "version": "2.0.0",
   "scripts": {
     "watch": "tsc --watch",
-    "lint": "tslint --project .",
     "build": "tsc",
-    "test": "yarn build && nyc mocha 'build/test/**/*.js'"
+    "test-init": "mkdir -p reports",
+    "lint": "yarn test-init && tslint --project . --format junit --out reports/tslint.xml",
+    "test": "yarn test-init && nyc mocha 'build/test/**/*.js' --reporter mocha-junit-reporter"
   },
   "engines": {
     "node": ">=7.0.0"
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@types/mocha": "^2.2.44",
     "mocha": "^4.0.1",
+    "mocha-junit-reporter": "^1.18.0",
     "nyc": "^13.0.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.1"

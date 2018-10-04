@@ -1,9 +1,17 @@
-build/
+# dependencies
 node_modules/
-assets/
+
+# logs
+*.log
+
+# test artifacts
 coverage/
+reports/
 .nyc_output
 cc-test-reporter
+
+# misc
+build/
+assets/
 config.json
-*.log
 test.html

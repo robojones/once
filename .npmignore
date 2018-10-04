@@ -5,6 +5,7 @@ package-lock.json
 
 # tests
 coverage/
+reports/
 build/test/
 
 # typescript
