@@ -8,7 +8,7 @@
     "watch": "tsc --watch",
     "build": "tsc",
     "test-init": "mkdir -p reports",
-    "lint": "yarn test-init && tslint --project .",
+    "lint": "yarn test-init && tslint --project . --format junit --out reports/tslint.xml",
     "test": "yarn test-init && nyc mocha 'build/test/**/*.js' --reporter mocha-junit-reporter"
   },
   "engines": {
