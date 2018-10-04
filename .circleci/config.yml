@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Run tests
           command: yarn test
-					environment:
+          environment:
             MOCHA_FILE: reports/junit.xml
       - store_test_results:
           path: ~/reports
