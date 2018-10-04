@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 import { EventEmitter } from 'events'
-import once from '..'
+import { once } from '..'
 
 describe('once', () => {
 	beforeEach(function () {
@@ -70,10 +70,6 @@ describe('once', () => {
 				const result = await promise
 
 				assert.strictEqual(result, value)
-			})
-
-			it('should correctly handle directly passed promises.', async function () {
-				await once(this.emitter, [Promise.resolve('asdf'), Promise.resolve('huhn')])
 			})
 		})
 	})
