@@ -59,7 +59,7 @@ describe('once', () => {
 
 		describe('multiple events', () => {
 			it('should resolve to the value of the first resolved promise', async function () {
-				const promise = once(this.emitter, ['first', 'second', 'third'])
+				// const promise = once(this.emitter, ['first', 'second', 'third'])
 				const value = 'foo'
 
 				this.emitter.emit('second', value)
@@ -67,9 +67,11 @@ describe('once', () => {
 					this.emitter.emit('first', 2)
 					this.emitter.emit('third', 3)
 				})
-				const result = await promise
+				// const result = await promise
 
-				assert.strictEqual(result, value)
+				throw new Error('THIS IS AN ERROR!!!!')
+
+				// assert.strictEqual(result, value)
 			})
 		})
 	})
